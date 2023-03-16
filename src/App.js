@@ -1,4 +1,6 @@
-import ExpenseItem from "./ExpenseItem";
+
+import NewExpense from "./components/NewExpense";
+import Expense from "./Expense";
 
 function App() {
   const expenses = [
@@ -22,23 +24,18 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+  const expenseMange=(updateExpense)=>{
+    console.log('in the app');
+    const changedExpenses={
+      ...expenses,
+      updateExpense
+    }
+    console.log(changedExpenses);
+  }
   return (
     <>
-      <ExpenseItem
-        expenseDate={expenses[0].date}
-        expenseTitle={expenses[0].title}
-        expenseAmount={expenses[0].amount}
-      />
-      <ExpenseItem
-        expenseDate={expenses[1].date}
-        expenseTitle={expenses[1].title}
-        expenseAmount={expenses[1].amount}
-      />
-      <ExpenseItem
-        expenseDate={expenses[2].date}
-        expenseTitle={expenses[2].title}
-        expenseAmount={expenses[2].amount}
-      />
+      <NewExpense expenseHanlder={expenseMange}/>
+      <Expense expenses={expenses}/>
     </>
   );
 }
